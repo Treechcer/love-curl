@@ -2,11 +2,16 @@
 http = {}
 
 ---@param str string
+---@return string
 function http.JSONparser(str) --parses string JSON into Lua table
-    return str:gsub('"([^"]+)"%s*:%s*', '["%1"] = ')
+    --I want to retorn only str, so I hate to save it as variable yk
+    local ret = str:gsub('"([^"]+)"%s*:%s*', '["%1"] = ')
+    return ret
 end
 
-function http.StringParser(jsonTable)
+---@param jsonTable table
+---@return string
+function http.StringParser(jsonTable) --parses motmal table into JSON
     str = "{"
     
     for key, value in pairs(jsonTable) do
