@@ -39,6 +39,7 @@ end
 ---@return table
 function http.JSONRequest(URL, curlVars) --auomatically add '-H "Accept: application/json!"' to your request for JSON and returns in as a lua table
     curlVars = curlVars or ""
+    ---@diagnostic disable-next-line
     body = loadstring("return " .. http.JSONparser(http.reqest(URL, curlVars .. ' -H "Accept: application/json!"')))()
 
     return body
