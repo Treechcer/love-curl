@@ -5,7 +5,7 @@ http = {}
 ---@return string
 function http.JSONparser(str) --parses string JSON into Lua table
     --I want to retorn only str, so I hate to save it as variable yk
-    local ret = str:gsub('"([^"]+)"%s*:%s*', '["%1"] = ')
+    local ret = str:gsub("[", "{"):gsub("]", "}"):gsub('"([^"]+)"%s*:%s*', '["%1"] = ')
     return ret
 end
 
